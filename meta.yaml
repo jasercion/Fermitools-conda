@@ -15,17 +15,14 @@ build:
 
 requirements:
   build:
-    #- {{ compiler('c') }}
-    #- {{ compiler('cxx') }}
-    #- {{ compiler('fortran') }}
-    - gcc 4.8.5 # [linux]  
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ compiler('fortran') }}
+    #- gcc 4.8.5 # [linux]  
     #- scons 2.*
     #- fermi-repoman
     
   host:
-    #- {{ compiler('c') }}
-    #- {{ compiler('cxx') }}
-    #- {{ compiler('fortran') }}
     - ape 2.9
     - aplpy
     - astropy
@@ -47,7 +44,6 @@ requirements:
     - root5 5.34.38
     - scons 2.*
     - swig 3.0.12
-    #- toolchain
     - wcslib 5.18
     - xerces-c 3.2.0
 
