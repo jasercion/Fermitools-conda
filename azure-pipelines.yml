@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'CentOS6'
+  vmImage: 'CentOS'
 steps:
 - bash: echo "##vso[task.prependpath]$CONDA/bin"
   displayName: Add conda to PATH
