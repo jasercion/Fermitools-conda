@@ -18,7 +18,10 @@ steps:
 - bash: |
     source activate py2_build
     conda install --yes -c conda-forge conda-build
+    source deactivate
   displayName: Set up environment for build
 
-- bash: conda build --python=2.7 -c conda-forge/label/cf201901 -c fermi .
+- bash: |
+    source activate py2_build
+    conda build --python=2.7 -c conda-forge/label/cf201901 -c fermi .
   displayName: Launch build
