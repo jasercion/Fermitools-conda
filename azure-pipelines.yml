@@ -25,3 +25,10 @@ steps:
     source activate py2_build
     conda build --python=2.7 -c conda-forge/label/cf201901 -c fermi .
   displayName: Launch build
+
+- task: AzureKeyVault@1
+  inputs:
+    ConnectedServiceName: 'Free Trial(843929f7-f9ba-47fe-8b5f-f02d3cffaba1)'
+    KeyVaultName: 'Fermitools-Vault'
+
+
