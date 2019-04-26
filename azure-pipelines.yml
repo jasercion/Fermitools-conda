@@ -28,7 +28,7 @@ steps:
   displayName: Set up environment for build
 
 - bash: |
-    conda config --add channels https://conda.anaconda.org/t/$Jasercion-Anaconda-Api/Fermi/dev
+    conda config --add channels https://conda.anaconda.org/t/$Jasercion-Anaconda-Api/jasercion/label/dev
     conda config --set anaconda_upload yes
   displayName: Set up upload configuration
 
