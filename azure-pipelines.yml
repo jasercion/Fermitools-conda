@@ -12,6 +12,11 @@ steps:
 - bash: echo "##vso[task.prependpath]$CONDA/bin"
   displayName: Add conda to PATH
 
+- task: AzureKeyVault@1
+  inputs:
+    ConnectedServiceName: 'Free Trial(843929f7-f9ba-47fe-8b5f-f02d3cffaba1)'
+    KeyVaultName: 'Fermitools-Vault'
+
 - bash: conda create --yes --quiet --name py2_build -c conda-forge python=2.7
   displayName: Create Anaconda environment
   
@@ -22,13 +27,13 @@ steps:
   displayName: Set up environment for build
 
 - bash: |
+    conda config --add channels https://conda.anaconda.org/t/$Jasercion-Anaconda-Api/Fermi/dev
+    conda config --set anaconda_upload yes
+  displayName: Set up upload configuration
+
+- bash: |
     source activate py2_build
     conda build --python=2.7 -c conda-forge/label/cf201901 -c fermi .
   displayName: Launch build
-
-- task: AzureKeyVault@1
-  inputs:
-    ConnectedServiceName: 'Free Trial(843929f7-f9ba-47fe-8b5f-f02d3cffaba1)'
-    KeyVaultName: 'Fermitools-Vault'
 
 
