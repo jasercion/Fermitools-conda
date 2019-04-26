@@ -37,4 +37,14 @@ steps:
     conda build --python=2.7 -c conda-forge/label/cf201901 -c fermi .
   displayName: Launch build
 
+- bash: | 
+    source deactivate
+    conda create --yes --quiet --use-local --name test -c conda-forge/label/cf201901 -c fermi -c jasercion/label/dev fermitools
+    mkdir test
+    cd test
+  displayName: Set up test environment
 
+- bash: |
+    source activate test
+    ST-unit-test --bit64
+  displayName: Run unit tests
