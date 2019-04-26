@@ -12,7 +12,7 @@ steps:
 - bash: echo "##vso[task.prependpath]$CONDA/bin"
   displayName: Add conda to PATH
 
-- bash: conda create --yes --quiet --name py2_build -c conda-forge/label/cf201901 conda-build
+- bash: conda create --yes --quiet --name py2_build -c conda-forge python=2.7 conda-build
   displayName: Create Anaconda environment
 
 - bash: |
