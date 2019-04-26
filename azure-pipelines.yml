@@ -16,6 +16,7 @@ steps:
   inputs:
     ConnectedServiceName: 'Free Trial(843929f7-f9ba-47fe-8b5f-f02d3cffaba1)'
     KeyVaultName: 'Fermitools-Vault'
+    SecretsFilter: 'Jasercion-Anaconda-Api'
 
 - bash: conda create --yes --quiet --name py2_build -c conda-forge python=2.7
   displayName: Create Anaconda environment
