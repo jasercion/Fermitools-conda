@@ -28,14 +28,18 @@ steps:
   displayName: Set up environment for build
 
 - bash: |
-    conda config --add channels https://conda.anaconda.org/t/$Jasercion-Anaconda-Api/jasercion/label/dev
-    conda config --set anaconda_upload yes
+    conda config --set anaconda_upload no
   displayName: Set up upload configuration
 
 - bash: |
     source activate py2_build
     conda build --python=2.7 -c conda-forge/label/cf201901 -c fermi .
   displayName: Launch build
+
+
+- bash: |
+    anaconda upload -u jasercion --label=dev -t $Jasercion-Anaconda-Api fermitools
+  displayName: Upload package to Anaconda Cloud
 
 - bash: | 
     source deactivate
