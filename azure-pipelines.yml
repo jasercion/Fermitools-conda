@@ -34,7 +34,7 @@ steps:
 - bash: |
     source activate py2_build
     conda build --python=2.7 -c conda-forge/label/cf201901 -c fermi .
-    anaconda upload -u jasercion --label=dev -t $Jasercion-Anaconda-Api fermitools
+    anaconda  -t $Jasercion-Anaconda-Api upload -u jasercion --label=dev fermitools
   displayName: Run build
 
 - bash: | 
