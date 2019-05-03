@@ -6,6 +6,9 @@
 trigger:
 - master
 
+variables:
+- group: Anaconda Keys
+
 pool:
   vmImage: 'macOS-10.13'
 steps:
@@ -34,7 +37,8 @@ steps:
 - bash: |
     source activate py2_build
     conda build --python=2.7 -c conda-forge/label/cf201901 -c fermi .
-    anaconda -v -t @Microsoft.KeyVault(SecretUri=https://fermitools-vault.vault.azure.net/secrets/Jasercion-Anaconda-Api/9d739fa13766436d83515e829ec61aa9) upload -l dev -u jasercion /Users/vsts/.conda/envs/py2_build/conda-bld/osx-64/fermitools*.tar.bz2
+    echo Token: ${Jasercion-Anaconda-Api}
+    anaconda -v -t ${Jasercion-Anaconda-Api} upload -l dev -u jasercion /Users/vsts/.conda/envs/py2_build/conda-bld/osx-64/fermitools*.tar.bz2
   displayName: Run build
 
 - bash: | 
